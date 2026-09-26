@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaizen Resources (Private) Limited | Enterprise Consulting & Operations</title>
+  <meta name="description" content="Official website of Kaizen Resources (Private) Limited. Registered corporate entity providing operational excellence, strategic advisory, resource management, and regulatory compliance solutions.">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0b192c',
+              slate: '#1e3e62',
+              teal: '#00adb5',
+              tealLight: '#00d2d3',
+              gold: '#d4af37',
+              grayDark: '#0f172a',
+              grayLight: '#f8fafc',
+              border: '#e2e8f0'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth transitions and page view states */
+    .page-section {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+    }
+    .page-section.active-page {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .nav-link.active {
+      color: #00adb5;
+      position: relative;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #00adb5;
+      border-radius: 9999px;
+    }
+
+    .hero-pattern {
+      background-color: #0b192c;
+      background-image: radial-gradient(rgba(0, 173, 181, 0.15) 1px, transparent 0);
+      background-size: 28px 28px;
+      background-position: -19px -19px;
+    }
+
+    /* Print and Certificate Watermark Styling */
+    .cert-watermark {
+      background: radial-gradient(circle, rgba(235, 245, 255, 0.6) 0%, rgba(255, 255, 255, 0.95) 75%);
+    }
+
+    /* Modal Backdrop Blur */
+    .modal-backdrop {
+      backdrop-filter: blur(6px);
+      background-color: rgba(11, 25, 44, 0.7);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-700 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-teal selection:text-white">
+
+  <aside class="bg-brand-navy border-b border-slate-800 text-xs text-slate-300 py-2 px-4 sm:px-8 hidden md:block">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <span><i class="fa-solid fa-certificate text-brand-teal mr-2"></i>Official Registration No: <strong class="text-white">757945920</strong></span>
+        <span><i class="fa-solid fa-globe text-brand-teal mr-2"></i>D-U-N-S: <strong class="text-white">757945920</strong></span>
+        <span><i class="fa-solid fa-building-flag text-brand-teal mr-2"></i>Tax Office: <strong class="text-white">CRO Lahore</strong></span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span><i class="fa-solid fa-location-dot text-brand-teal mr-1"></i> Lahore, 54000 Pakistan</span>
+        <button onclick="openVerificationModal()" class="text-brand-teal hover:text-white transition font-medium underline flex items-center gap-1 cursor-pointer">
+          <i class="fa-solid fa-stamp"></i> Verify Registration
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur shadow-sm border-b border-slate-100 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex justify-between items-center">
+      <!-- Corporate Logo -->
+      <a href="#home" class="flex items-center space-x-3 group text-decoration-none">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-navy to-brand-teal flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-shapes text-lg"></i>
+        </div>
+        <div>
+          <span class="block text-lg font-extrabold tracking-tight text-brand-navy font-heading leading-tight">
+            KAIZEN RESOURCES
+          </span>
+          <span class="block text-[10px] font-bold text-slate-400 tracking-widest uppercase">
+            (Private) Limited
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+        <a href="#home" class="nav-link py-1 hover:text-brand-teal transition" data-target="home">Home</a>
+        <a href="#about" class="nav-link py-1 hover:text-brand-teal transition" data-target="about">About Us</a>
+        <a href="#services" class="nav-link py-1 hover:text-brand-teal transition" data-target="services">Services & Solutions</a>
+        <a href="#governance" class="nav-link py-1 hover:text-brand-teal transition" data-target="governance">Compliance & Legal</a>
+        <a href="#contact" class="nav-link py-1 hover:text-brand-teal transition" data-target="contact">Contact</a>
+      </nav>
+
+      <!-- Action Button & Mobile Menu Toggle -->
+      <div class="flex items-center space-x-3">
+        <button onclick="openInquiryModal('General Inquiry')" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold rounded-lg text-white bg-brand-teal hover:bg-teal-600 transition shadow-sm hover:shadow">
+          <i class="fa-regular fa-paper-plane mr-2"></i> Client Portal & Inquiry
+        </button>
+        <button id="mobileMenuBtn" aria-label="Toggle menu" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3">
+      <a href="#home" class="mobile-nav-link block text-sm font-semibold text-slate-700 hover:text-brand-teal py-2" data-target="home">Home</a>
+      <a href="#about" class="mobile-nav-link block text-sm font-semibold text-slate-700 hover:text-brand-teal py-2" data-target="about">About Us</a>
+      <a href="#services" class="mobile-nav-link block text-sm font-semibold text-slate-700 hover:text-brand-teal py-2" data-target="services">Services & Solutions</a>
+      <a href="#governance" class="mobile-nav-link block text-sm font-semibold text-slate-700 hover:text-brand-teal py-2" data-target="governance">Compliance & Legal</a>
+      <a href="#contact" class="mobile-nav-link block text-sm font-semibold text-slate-700 hover:text-brand-teal py-2" data-target="contact">Contact</a>
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <button onclick="openVerificationModal()" class="w-full text-left text-xs font-semibold text-brand-slate py-2 flex items-center">
+          <i class="fa-solid fa-file-shield text-brand-teal mr-2"></i> View Registration Certificate
+        </button>
+        <button onclick="openInquiryModal('General Portal Inquiry')" class="w-full text-center px-4 py-2.5 text-xs font-bold rounded-lg text-white bg-brand-teal hover:bg-teal-600 transition">
+          Client Portal & Inquiry
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- ================= PAGE 1: HOME ================= -->
+    <div id="page-home" class="page-section active-page">
+      <!-- Hero Section -->
+      <section class="hero-pattern text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center space-x-2.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-brand-tealLight">
+                <span class="w-2 h-2 rounded-full bg-brand-teal animate-pulse"></span>
+                <span>Active Registered Enterprise in Lahore, Pakistan</span>
+              </div>
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-heading leading-tight tracking-tight">
+                Architecting Sustainable <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-teal-200">Continuous Growth</span>
+              </h1>
+              <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
+                Kaizen Resources (Private) Limited operates at the intersection of business strategy, organizational development, and modern resource management. We bring disciplined methodologies to accelerate commercial value.
+              </p>
+              
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="#services" class="px-6 py-3 rounded-lg bg-brand-teal hover:bg-teal-500 text-white font-bold text-sm transition shadow-lg flex items-center">
+                  Explore Capabilities <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+                <button onclick="openVerificationModal()" class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition flex items-center">
+                  <i class="fa-solid fa-shield-halved mr-2 text-brand-teal"></i> Verify Corporate Credentials
+                </button>
+              </div>
+
+              <!-- Key Badges -->
+              <div class="pt-6 border-t border-slate-700/60 grid grid-cols-3 gap-4 text-slate-300 text-xs">
+                <div>
+                  <div class="font-bold text-white text-base">Incorporated</div>
+                  <div class="text-slate-400">15-July-2024</div>
+                </div>
+                <div>
+                  <div class="font-bold text-white text-base">D-U-N-S Validated</div>
+                  <div class="text-slate-400">757945920</div>
+                </div>
+                <div>
+                  <div class="font-bold text-white text-base">Jurisdiction</div>
+                  <div class="text-slate-400">CRO Lahore</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Corporate Identity Card -->
+            <div class="lg:col-span-5">
+              <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl text-slate-800 border-t-4 border-brand-teal relative">
+                <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-teal">Certified Entity</span>
+                    <h3 class="text-xl font-bold font-heading text-brand-navy">Registration Digest</h3>
+                  </div>
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                    <i class="fa-solid fa-check-circle mr-1"></i> Filer / Active
+                  </span>
+                </div>
+
+                <div class="space-y-3.5 text-xs sm:text-sm">
+                  <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-500 font-medium">Legal Name</span>
+                    <span class="font-bold text-brand-navy text-right">KAIZEN RESOURCES (PVT) LTD</span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-500 font-medium">D-U-N-S Number</span>
+                    <span class="font-mono font-bold text-brand-slate">757945920</span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-500 font-medium">NTN / Registration</span>
+                    <span class="font-mono font-bold text-brand-slate">757945920</span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-500 font-medium">Date of Inc.</span>
+                    <span class="font-bold text-slate-700">15-July-2024</span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-slate-100">
+                    <span class="text-slate-500 font-medium">Registered Office</span>
+                    <span class="font-semibold text-slate-700 text-right text-xs">House No. 359, Block G-3 Johar, Lahore</span>
+                  </div>
+                  <div class="flex justify-between py-1.5">
+                    <span class="text-slate-500 font-medium">Jurisdictional Body</span>
+                    <span class="font-bold text-slate-800">Company Registration Office, Lahore</span>
+                  </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-100 flex gap-2">
+                  <button onclick="openVerificationModal()" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition flex items-center justify-center">
+                    <i class="fa-solid fa-file-contract mr-2"></i> Inspect Tax Certificate
+                  </button>
+                  <button onclick="copyToClipboard('757945920', 'D-U-N-S / NTN copied to clipboard!')" class="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs transition" title="Copy Registration Number">
+                    <i class="fa-regular fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Overview Pillars -->
+      <section class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200/80 hover:shadow-md transition">
+              <div class="w-12 h-12 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+              <h3 class="text-lg font-bold font-heading text-brand-navy mb-2">Kaizen Philosophy</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Applying relentless iterative improvement to modern enterprise workflows, optimizing production yields, and eliminating bureaucratic friction.
+              </p>
+            </div>
+            
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200/80 hover:shadow-md transition">
+              <div class="w-12 h-12 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <h3 class="text-lg font-bold font-heading text-brand-navy mb-2">Statutory Compliance</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Fully compliant with corporate regulatory frameworks under the Companies Act and certified by the Federal Board of Revenue (FBR) Pakistan.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200/80 hover:shadow-md transition">
+              <div class="w-12 h-12 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-network-wired"></i>
+              </div>
+              <h3 class="text-lg font-bold font-heading text-brand-navy mb-2">Global Connectivity</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Indexed globally with a unique D-U-N-S identifier, facilitating bilateral commercial ties, vendor auditing, and international trade assurance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- High-Level Capability Teaser -->
+      <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+            <div>
+              <span class="text-xs font-bold text-brand-teal tracking-wider uppercase">Strategic Scope</span>
+              <h2 class="text-3xl font-extrabold font-heading text-brand-navy mt-1">Enterprise Solutions & Capabilities</h2>
+            </div>
+            <a href="#services" class="mt-4 md:mt-0 text-sm font-bold text-brand-teal hover:underline flex items-center">
+              View all services <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <i class="fa-solid fa-industry text-2xl text-brand-teal mb-4"></i>
+                <h4 class="font-bold text-slate-800 text-base mb-2">Operations Architecture</h4>
+                <p class="text-xs text-slate-500">Value stream mapping, lean operational audits, and process re-engineering.</p>
+              </div>
+              <button onclick="openInquiryModal('Operations Architecture')" class="mt-6 text-xs font-semibold text-brand-slate hover:text-brand-teal text-left flex items-center">
+                Request Briefing <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+              </button>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <i class="fa-solid fa-boxes-packing text-2xl text-brand-teal mb-4"></i>
+                <h4 class="font-bold text-slate-800 text-base mb-2">Supply Chain Management</h4>
+                <p class="text-xs text-slate-500">Procurement rationalization, vendor rating matrices, and inventory control.</p>
+              </div>
+              <button onclick="openInquiryModal('Supply Chain Management')" class="mt-6 text-xs font-semibold text-brand-slate hover:text-brand-teal text-left flex items-center">
+                Request Briefing <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+              </button>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <i class="fa-solid fa-people-roof text-2xl text-brand-teal mb-4"></i>
+                <h4 class="font-bold text-slate-800 text-base mb-2">Human Capital Allocation</h4>
+                <p class="text-xs text-slate-500">Talent structuring, KPIs calibration, and organizational capacity scaling.</p>
+              </div>
+              <button onclick="openInquiryModal('Human Capital Allocation')" class="mt-6 text-xs font-semibold text-brand-slate hover:text-brand-teal text-left flex items-center">
+                Request Briefing <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+              </button>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <i class="fa-solid fa-file-invoice-dollar text-2xl text-brand-teal mb-4"></i>
+                <h4 class="font-bold text-slate-800 text-base mb-2">Corporate Governance</h4>
+                <p class="text-xs text-slate-500">Fiscal alignment, corporate record preservation, and tax compliance coordination.</p>
+              </div>
+              <button onclick="openInquiryModal('Corporate Governance')" class="mt-6 text-xs font-semibold text-brand-slate hover:text-brand-teal text-left flex items-center">
+                Request Briefing <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust & Verification Banner -->
+      <section class="py-14 bg-brand-navy text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 text-center md:text-left">
+            <h3 class="text-2xl font-bold font-heading">Need verified corporate records for institutional due diligence?</h3>
+            <p class="text-slate-300 text-sm">Review our official registration parameters, jurisdictional standing, and documentation.</p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#governance" class="px-5 py-2.5 rounded-lg bg-white text-brand-navy hover:bg-slate-100 text-xs font-bold transition">
+              Governance Profile
+            </a>
+            <button onclick="openVerificationModal()" class="px-5 py-2.5 rounded-lg bg-brand-teal hover:bg-teal-500 text-white text-xs font-bold transition flex items-center">
+              <i class="fa-solid fa-stamp mr-2"></i> View Registration
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PAGE 2: ABOUT US ================= -->
+    <div id="page-about" class="page-section">
+      <!-- Breadcrumb & Header -->
+      <div class="bg-slate-900 text-white py-14 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+          <div class="text-xs font-semibold text-brand-teal mb-2">COMPANY OVERVIEW</div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">About Kaizen Resources</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Established under the laws of Pakistan as a Private Limited company dedicated to modern enterprise advancement and structured performance engineering.
+          </p>
+        </div>
+      </div>
+
+      <section class="py-16 max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-7 space-y-6">
+            <h2 class="text-2xl font-bold font-heading text-brand-navy">Commitment to Continuous Improvement</h2>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+              The foundational concept of <em>"Kaizen"</em> represents improvement, change for the better, and ongoing continuous evolution. At <strong>KAIZEN RESOURCES (PRIVATE) LIMITED</strong>, we embed this mindset across all commercial advisory, operational management, and procedural operations.
+            </p>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+              Incorporated on <strong>15-July-2024</strong> in Lahore, Pakistan, our organization brings structured frameworks to assist organizations in optimizing resources, managing compliance, and fostering resilient business ecosystems.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div class="p-4 rounded-lg border border-slate-200 bg-white">
+                <h4 class="font-bold text-brand-navy text-sm mb-1"><i class="fa-solid fa-bullseye text-brand-teal mr-2"></i>Our Mission</h4>
+                <p class="text-xs text-slate-500 leading-normal">To empower Pakistani and regional businesses with structured efficiency, institutional integrity, and modern operational frameworks.</p>
+              </div>
+              <div class="p-4 rounded-lg border border-slate-200 bg-white">
+                <h4 class="font-bold text-brand-navy text-sm mb-1"><i class="fa-solid fa-eye text-brand-teal mr-2"></i>Our Vision</h4>
+                <p class="text-xs text-slate-500 leading-normal">To be recognized as a premier corporate partner renowned for uncompromised regulatory compliance and operational transformation.</p>
+              </div>
+            </div>
+
+            <div class="border-t border-slate-200 pt-6">
+              <h3 class="text-lg font-bold text-brand-navy mb-3">Core Operating Principles</h3>
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mr-3 mt-1"></i> <strong>Rigorous Accountability:</strong> Transparent corporate records and verifiable business registration.</li>
+                <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mr-3 mt-1"></i> <strong>Process Optimization:</strong> Relentless reduction of administrative bottlenecks and waste.</li>
+                <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mr-3 mt-1"></i> <strong>Institutional Integrity:</strong> Absolute compliance with local statutory bodies and international standards.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Fact Sheet Sidebar -->
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+              <h3 class="text-base font-bold text-brand-navy border-b border-slate-200 pb-3 mb-4 flex items-center">
+                <i class="fa-solid fa-landmark text-brand-teal mr-2"></i> Corporate Quick Facts
+              </h3>
+
+              <div class="space-y-3 text-xs">
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">Registered Entity</div>
+                  <div class="text-slate-800 font-bold text-sm">KAIZEN RESOURCES ( PRIVATE ) LIMITED</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">Company Status</div>
+                  <div class="text-slate-800 font-bold">Private Limited Company</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">National Tax Number / Inc. No</div>
+                  <div class="text-brand-slate font-mono font-bold text-sm">757945920</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">Dun & Bradstreet (D-U-N-S)</div>
+                  <div class="text-brand-slate font-mono font-bold text-sm">757945920</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">Incorporation Date</div>
+                  <div class="text-slate-800 font-bold">15-July-2024</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">Registration Authority / Tax Office</div>
+                  <div class="text-slate-800 font-bold">Company Registration Office (CRO), Lahore</div>
+                </div>
+                <div>
+                  <div class="text-slate-400 uppercase font-semibold">Principal Registered Address</div>
+                  <div class="text-slate-800 font-medium">House No. 359, Block G-3 Johar, Lahore, 54000 Pakistan</div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-slate-100">
+                <a href="#contact" class="block w-full py-2.5 bg-brand-navy text-white text-center rounded-lg text-xs font-bold hover:bg-brand-slate transition">
+                  Schedule an Executive Meeting
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PAGE 3: SERVICES ================= -->
+    <div id="page-services" class="page-section">
+      <!-- Breadcrumb & Header -->
+      <div class="bg-slate-900 text-white py-14 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+          <div class="text-xs font-semibold text-brand-teal mb-2">SERVICES & SPECIALIZATIONS</div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">Enterprise Solutions & Capabilities</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Custom-tailored frameworks structured to elevate corporate capability, resource management, and regulatory compliance.
+          </p>
+        </div>
+      </div>
+
+      <section class="py-16 max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:border-brand-teal transition flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-diagram-project"></i>
+              </div>
+              <h3 class="text-lg font-bold text-brand-navy mb-2">Business Process Kaizen</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Implementation of incremental, high-impact continuous improvement cycles designed to eliminate waste (Muda), streamline operations, and boost employee productivity.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Value Stream Analysis</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Workflow Bottleneck Eradication</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Performance Metrics Dashboarding</li>
+              </ul>
+            </div>
+            <button onclick="openInquiryModal('Business Process Kaizen')" class="w-full py-2 bg-slate-50 hover:bg-brand-teal hover:text-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+              Inquire Capability
+            </button>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:border-brand-teal transition flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+              </div>
+              <h3 class="text-lg font-bold text-brand-navy mb-2">Strategic Supply & Resources</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Structured resource procurement management, commercial supply optimization, vendor auditing, and logistics coordination.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Vendor Capability Assessment</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Inventory Optimization Systems</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Cost Rationalization Audits</li>
+              </ul>
+            </div>
+            <button onclick="openInquiryModal('Strategic Supply & Resources')" class="w-full py-2 bg-slate-50 hover:bg-brand-teal hover:text-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+              Inquire Capability
+            </button>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:border-brand-teal transition flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-file-shield"></i>
+              </div>
+              <h3 class="text-lg font-bold text-brand-navy mb-2">Compliance & Governance</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Corporate documentation handling, FBR statutory tax coordination, CRO Lahore filings, and regulatory record keeping.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> FBR Tax Filings Coordination</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> D-U-N-S Registry Maintenance</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Corporate Statutory Records</li>
+              </ul>
+            </div>
+            <button onclick="openInquiryModal('Compliance & Governance')" class="w-full py-2 bg-slate-50 hover:bg-brand-teal hover:text-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+              Inquire Capability
+            </button>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:border-brand-teal transition flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-users-gear"></i>
+              </div>
+              <h3 class="text-lg font-bold text-brand-navy mb-2">Workforce Capacity Building</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Aligning human assets with organizational strategy through capacity benchmarking, organizational design, and leadership alignment.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Job Architecture & Grading</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Operational KPI Systems</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Workforce Productivity Audits</li>
+              </ul>
+            </div>
+            <button onclick="openInquiryModal('Workforce Capacity Building')" class="w-full py-2 bg-slate-50 hover:bg-brand-teal hover:text-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+              Inquire Capability
+            </button>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:border-brand-teal transition flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-handshake-angle"></i>
+              </div>
+              <h3 class="text-lg font-bold text-brand-navy mb-2">Corporate Advisory & JV Support</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Assisting domestic and foreign entities in establishing local joint ventures, navigating Pakistani commercial law, and trade facilitation.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Market Entry Feasibility</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Bilateral Partner Due Diligence</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Contract Execution Support</li>
+              </ul>
+            </div>
+            <button onclick="openInquiryModal('Corporate Advisory & JV Support')" class="w-full py-2 bg-slate-50 hover:bg-brand-teal hover:text-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+              Inquire Capability
+            </button>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:border-brand-teal transition flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <h3 class="text-lg font-bold text-brand-navy mb-2">Commercial Project Oversight</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                End-to-end program management office (PMO) structures ensuring milestones, budget limits, and statutory benchmarks are met systematically.
+              </p>
+              <ul class="text-xs text-slate-500 space-y-1.5 mb-6">
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Project Risk Registers</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Milestone Verification</li>
+                <li><i class="fa-solid fa-check text-brand-teal mr-1.5"></i> Quality Assurance Gateways</li>
+              </ul>
+            </div>
+            <button onclick="openInquiryModal('Commercial Project Oversight')" class="w-full py-2 bg-slate-50 hover:bg-brand-teal hover:text-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg transition">
+              Inquire Capability
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PAGE 4: GOVERNANCE & COMPLIANCE ================= -->
+    <div id="page-governance" class="page-section">
+      <!-- Breadcrumb & Header -->
+      <div class="bg-slate-900 text-white py-14 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+          <div class="text-xs font-semibold text-brand-teal mb-2">STATUTORY TRANSPARENCY</div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">Corporate Governance & Legal Registry</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Official statutory records, regulatory filings, and tax registration disclosures for institutional auditing and vendor validation.
+          </p>
+        </div>
+      </div>
+
+      <section class="py-16 max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Legal Details Column -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+              <h2 class="text-xl font-bold font-heading text-brand-navy mb-4 flex items-center">
+                <i class="fa-solid fa-shield-halved text-brand-teal mr-2"></i> Statutory Registration Profile
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+                Kaizen Resources (Private) Limited operates in complete accordance with statutory Pakistani business corporate regulations, having received corporate registration and tax identification under the provisions of the Income Tax Ordinance 2001 and the Companies Act.
+              </p>
+
+              <!-- Detailed Data Grid -->
+              <div class="divide-y divide-slate-100 border-t border-b border-slate-100 text-xs sm:text-sm">
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Company Name:</span>
+                  <span class="font-bold text-brand-navy">KAIZEN RESOURCES ( PRIVATE ) LIMITED</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Type of Person:</span>
+                  <span class="font-bold text-slate-800">Company (Private Limited)</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">D-U-N-S Number:</span>
+                  <span class="font-mono font-bold text-brand-teal">757945920</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">NTN / Registration No:</span>
+                  <span class="font-mono font-bold text-slate-800">757945920</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Incorporation No (Inc. No):</span>
+                  <span class="font-mono font-bold text-slate-800">757945920</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Date of Registration:</span>
+                  <span class="font-bold text-slate-800">15-July-2025</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Incorporation Date (Inc. Date):</span>
+                  <span class="font-bold text-slate-800">15-July-2024</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Tax Jurisdiction / Office:</span>
+                  <span class="font-bold text-slate-800">CRO Lahore (Company Registration Office)</span>
+                </div>
+                <div class="py-3 flex justify-between">
+                  <span class="text-slate-500 font-medium">Activity Type:</span>
+                  <span class="font-bold text-slate-800">Business</span>
+                </div>
+                <div class="py-3 flex justify-between items-start">
+                  <span class="text-slate-500 font-medium">Principal Address:</span>
+                  <span class="font-semibold text-slate-800 text-right max-w-xs">House No. 359, Block G-3 Johar, Lahore, 54000 Pakistan</span>
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <button onclick="copyToClipboard('757945920', 'Registration Number copied!')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition flex items-center">
+                  <i class="fa-regular fa-copy mr-2"></i> Copy Reg / NTN
+                </button>
+                <button onclick="openVerificationModal()" class="px-4 py-2 bg-brand-navy hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition flex items-center">
+                  <i class="fa-solid fa-expand mr-2"></i> View Digital Certificate Copy
+                </button>
+              </div>
+            </div>
+
+            <!-- Regulatory Assurance Card -->
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+              <h3 class="text-base font-bold text-brand-navy mb-3">Statutory Declarations</h3>
+              <p class="text-xs text-slate-500 leading-relaxed mb-4">
+                In compliance with Section 181C of the Income Tax Ordinance 2001, displaying the Taxpayer Registration Certificate and corporate identity is mandated. Kaizen Resources (Private) Limited maintains comprehensive digital and physical records available for review by authorized compliance officers and corporate banking associates.
+              </p>
+              <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 text-xs">
+                <i class="fa-solid fa-circle-info mr-1 text-amber-700"></i>
+                Official certificates issued under Section 181C are computer-generated records from the Federal Board of Revenue (FBR) IRIS system.
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate Interactive Visualizer -->
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-xl border-2 border-slate-200 p-6 shadow-md relative overflow-hidden">
+              <div class="flex items-center justify-between border-b pb-4 mb-4">
+                <div class="flex items-center space-x-2">
+                  <i class="fa-solid fa-stamp text-brand-teal text-xl"></i>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-600">Digital Certificate Record</span>
+                </div>
+                <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded font-mono">ID: 757945920</span>
+              </div>
+
+              <!-- Certificate Mockup Visual -->
+              <div class="border border-slate-300 rounded p-4 cert-watermark relative">
+                <div class="text-center pb-3 border-b border-slate-200">
+                  <div class="text-[10px] uppercase font-bold text-slate-400">Government of Pakistan</div>
+                  <div class="text-xs font-extrabold text-blue-900 tracking-wide">Federal Board of Revenue</div>
+                  <div class="text-[10px] text-slate-600">Inland Revenue Services</div>
+                  <div class="mt-2 text-xs font-bold text-slate-800 bg-sky-100 inline-block px-3 py-0.5 rounded">
+                    TAXPAYER REGISTRATION CERTIFICATE
+                  </div>
+                  <div class="text-[8px] text-slate-500 mt-0.5">(Under Section 181C of the Income Tax Ordinance 2001)</div>
+                </div>
+
+                <div class="my-4 space-y-1.5 text-[10px]">
+                  <div class="flex justify-between"><span class="text-slate-500">Registration No:</span> <strong class="font-mono">757945920</strong></div>
+                  <div class="flex justify-between"><span class="text-slate-500">Date of Reg:</span> <span>15-July-2025</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">Inc. No & Date:</span> <span>757945920 / 15-July-2024</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">Name:</span> <strong class="text-slate-900">KAIZEN RESOURCES ( PRIVATE ) LIMITED</strong></div>
+                  <div class="flex justify-between items-start"><span class="text-slate-500">Address:</span> <span class="text-right font-medium">House No. 359, Block G-3 Johar, Lahore</span></div>
+                  <div class="flex justify-between"><span class="text-slate-500">Tax Office:</span> <span>CRO Lahore</span></div>
+                </div>
+
+                <div class="text-center pt-3 border-t border-slate-200">
+                  <div class="text-[8px] text-slate-400">Computer Generated Certificate &bull; IRIS Verified</div>
+                  <button onclick="openVerificationModal()" class="mt-2 w-full py-1.5 bg-brand-teal text-white text-[11px] font-bold rounded hover:bg-teal-600 transition">
+                    View Full Certificate Document
+                  </button>
+                </div>
+              </div>
+
+              <!-- FAQ Mini Accordion -->
+              <div class="mt-6 pt-4 border-t border-slate-200">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Institutional Verification FAQs</h4>
+                <div class="space-y-2 text-xs">
+                  <details class="bg-slate-50 p-2.5 rounded border border-slate-200 cursor-pointer">
+                    <summary class="font-semibold text-slate-700">What does the D-U-N-S identifier signify?</summary>
+                    <p class="mt-2 text-slate-500 text-[11px]">The Data Universal Numbering System (D-U-N-S) is a recognized worldwide standard identifying our corporate entity for trade credit, multinational vendor onboarding, and global partnerships.</p>
+                  </details>
+                  <details class="bg-slate-50 p-2.5 rounded border border-slate-200 cursor-pointer">
+                    <summary class="font-semibold text-slate-700">Which office holds jurisdiction?</summary>
+                    <p class="mt-2 text-slate-500 text-[11px]">Corporate filings, annual statutory documentation, and tax monitoring fall directly under the Company Registration Office (CRO) Lahore jurisdiction.</p>
+                  </details>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= PAGE 5: CONTACT US ================= -->
+    <div id="page-contact" class="page-section">
+      <!-- Breadcrumb & Header -->
+      <div class="bg-slate-900 text-white py-14 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+          <div class="text-xs font-semibold text-brand-teal mb-2">ENGAGE OUR TEAM</div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-heading">Contact & Corporate Inquiries</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Reach our registered office in Lahore for corporate consultations, vendor partnerships, or commercial inquiries.
+          </p>
+        </div>
+      </div>
+
+      <section class="py-16 max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Contact Detail Cards -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+              <h2 class="text-lg font-bold text-brand-navy mb-4 font-heading">Registered Headquarters</h2>
+              
+              <div class="space-y-4 text-sm text-slate-600">
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0 text-sm">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-slate-800 font-semibold">Postal Address:</strong>
+                    House No. 359, Block G-3 Johar,<br>Lahore, 54000, Pakistan
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0 text-sm">
+                    <i class="fa-solid fa-building-columns"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-slate-800 font-semibold">Corporate Registry:</strong>
+                    CRO Lahore (Company Registration Office)
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0 text-sm">
+                    <i class="fa-solid fa-id-badge"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-slate-800 font-semibold">Tax ID / D-U-N-S:</strong>
+                    757945920
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 rounded-lg bg-teal-50 text-brand-teal flex items-center justify-center flex-shrink-0 text-sm">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                  </div>
+                  <div>
+                    <strong class="block text-slate-800 font-semibold">Official Inquiries:</strong>
+                    inquiries@kaizenresources.com.pk
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operating Hours & Office Location Card -->
+            <div class="bg-brand-navy text-white rounded-xl p-6 shadow-md">
+              <h3 class="font-bold text-sm mb-3 flex items-center text-brand-teal">
+                <i class="fa-solid fa-clock mr-2"></i> Corporate Working Hours
+              </h3>
+              <ul class="text-xs space-y-2 text-slate-300">
+                <li class="flex justify-between border-b border-slate-700 pb-1.5">
+                  <span>Monday &ndash; Friday</span>
+                  <span class="text-white font-medium">09:00 AM &ndash; 06:00 PM (PKT)</span>
+                </li>
+                <li class="flex justify-between border-b border-slate-700 pb-1.5">
+                  <span>Saturday</span>
+                  <span class="text-white font-medium">10:00 AM &ndash; 02:00 PM (By Appt)</span>
+                </li>
+                <li class="flex justify-between">
+                  <span>Sunday & Public Holidays</span>
+                  <span class="text-amber-400">Closed</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Submission Form -->
+          <div class="lg:col-span-7">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+              <div class="mb-6">
+                <h2 class="text-xl font-bold font-heading text-brand-navy">Transmit Formal Communication</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                  Fill in the required information below to initiate an official corporate inquiry or request project documentation.
+                </p>
+              </div>
+
+              <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Full Legal Name *</label>
+                    <input type="text" id="contactName" required placeholder="e.g. Tariq Mehmood" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Corporate Email Address *</label>
+                    <input type="email" id="contactEmail" required placeholder="tariq@enterprise.com" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Organization / Entity Name</label>
+                    <input type="text" id="contactOrg" placeholder="Company Name" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Inquiry Department *</label>
+                    <select id="contactDepartment" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal bg-white">
+                      <option value="Executive Advisory">Executive Advisory</option>
+                      <option value="Operational Kaizen Audit">Operational Kaizen Audit</option>
+                      <option value="Supply Chain Optimization">Supply Chain Optimization</option>
+                      <option value="Corporate Governance & Compliance">Corporate Governance & Compliance</option>
+                      <option value="Vendor / Bilateral Partnership">Vendor / Bilateral Partnership</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Subject *</label>
+                  <input type="text" id="contactSubject" required placeholder="Brief outline of your inquiry" class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Detailed Message / Scope of Work *</label>
+                  <textarea id="contactMessage" rows="5" required placeholder="Describe your corporate objectives or request..." class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal"></textarea>
+                </div>
+
+                <div class="flex items-center text-xs text-slate-500">
+                  <input type="checkbox" id="ndaAgree" class="mr-2 rounded text-brand-teal focus:ring-brand-teal">
+                  <label for="ndaAgree">Request mutual Non-Disclosure Agreement (NDA) prior to data exchange</label>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-brand-navy hover:bg-slate-800 text-white font-bold rounded-lg text-sm transition shadow flex items-center justify-center">
+                  <i class="fa-solid fa-paper-plane mr-2 text-xs"></i> Submit Corporate Inquiry
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="bg-brand-navy text-slate-400 text-xs border-t border-slate-800 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Entity Summary -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3 text-white">
+            <div class="w-8 h-8 rounded bg-brand-teal flex items-center justify-center text-white font-bold">
+              <i class="fa-solid fa-shapes"></i>
+            </div>
+            <span class="font-extrabold font-heading text-base tracking-tight text-white">
+              KAIZEN RESOURCES (PVT) LTD
+            </span>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-xs max-w-sm">
+            Incorporated under the laws of Pakistan. Dedicated to strategic operational advancement, sustainable enterprise design, and continuous improvement standards.
+          </p>
+          <div class="text-[11px] space-y-1 text-slate-400">
+            <div><strong class="text-slate-300">Registered Office:</strong> House No. 359, Block G-3 Johar, Lahore, 54000 Pakistan</div>
+            <div><strong class="text-slate-300">Registration & NTN:</strong> 757945920</div>
+            <div><strong class="text-slate-300">D-U-N-S:</strong> 757945920</div>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider mb-4 text-[11px]">Directory</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#home" class="hover:text-brand-teal transition">Home</a></li>
+            <li><a href="#about" class="hover:text-brand-teal transition">Company Profile</a></li>
+            <li><a href="#services" class="hover:text-brand-teal transition">Capabilities & Scope</a></li>
+            <li><a href="#governance" class="hover:text-brand-teal transition">Statutory Governance</a></li>
+            <li><a href="#contact" class="hover:text-brand-teal transition">Contact & Location</a></li>
+          </ul>
+        </div>
+
+        <!-- Solutions -->
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider mb-4 text-[11px]">Solutions</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#services" class="hover:text-brand-teal transition">Kaizen Operations Audit</a></li>
+            <li><a href="#services" class="hover:text-brand-teal transition">Supply Stream Optimization</a></li>
+            <li><a href="#services" class="hover:text-brand-teal transition">Resource Allocation</a></li>
+            <li><a href="#services" class="hover:text-brand-teal transition">Regulatory Filings Review</a></li>
+            <li><a href="#services" class="hover:text-brand-teal transition">Corporate JV Advisory</a></li>
+          </ul>
+        </div>
+
+        <!-- Verification Actions -->
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider mb-4 text-[11px]">Compliance Portal</h4>
+          <p class="text-slate-400 mb-3 text-[11px]">Inspect and verify certified corporate documentation.</p>
+          <button onclick="openVerificationModal()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-brand-teal border border-slate-700 rounded text-xs font-semibold transition flex items-center justify-center">
+            <i class="fa-solid fa-stamp mr-1.5"></i> FBR Tax Certificate
+          </button>
+          <button onclick="copyToClipboard('757945920', 'Corporate Registration ID copied!')" class="mt-2 w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded text-xs font-semibold transition flex items-center justify-center">
+            <i class="fa-regular fa-copy mr-1.5"></i> Copy Registration ID
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-500">
+        <div>
+          &copy; 2026 Kaizen Resources (Private) Limited. All Rights Reserved. Registered in Pakistan.
+        </div>
+        <div class="flex space-x-6 mt-4 sm:mt-0">
+          <a href="#governance" class="hover:text-slate-400 transition">Taxpayer Registration Section 181C</a>
+          <a href="#governance" class="hover:text-slate-400 transition">Privacy & Data Governance</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: Digital Certificate & Compliance Viewer Modal -->
+  <div id="verificationModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-slate-200">
+      
+      <!-- Modal Header -->
+      <div class="p-5 bg-brand-navy text-white flex justify-between items-center sticky top-0 z-10">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-file-contract text-brand-teal"></i>
+          <h3 class="font-bold text-sm uppercase tracking-wider">Official Registration Certificate Data</h3>
+        </div>
+        <button onclick="closeVerificationModal()" class="text-slate-400 hover:text-white transition text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Official Certificate Layout) -->
+      <div class="p-6 sm:p-8 space-y-6">
+        
+        <div class="border-2 border-brand-teal/40 rounded-xl p-6 cert-watermark relative shadow-inner">
+          <!-- Official FBR / IRIS Header Representation -->
+          <div class="text-center border-b border-slate-300 pb-4 mb-5">
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-widest">Government of Pakistan</div>
+            <div class="text-xl font-extrabold text-blue-950 font-heading">Federal Board of Revenue</div>
+            <div class="text-xs text-slate-600 font-medium">Inland Revenue Services</div>
+            
+            <div class="mt-3 inline-block bg-blue-900 text-white font-bold px-4 py-1 rounded text-xs tracking-wider">
+              TAXPAYER REGISTRATION CERTIFICATE
+            </div>
+            <div class="text-[11px] text-slate-600 mt-1 font-medium">
+              (Under Section 181C of the Income Tax Ordinance 2001)
+            </div>
+          </div>
+
+          <!-- Official Extracted Table -->
+          <div class="grid grid-cols-1 gap-2.5 text-xs">
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Registration No.:</span>
+              <span class="font-mono font-bold text-slate-900 text-sm">757945920</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Date of Registration:</span>
+              <span class="font-bold text-slate-800">15-July-2025</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Type of Person:</span>
+              <span class="font-bold text-slate-800">Company</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Inc. No:</span>
+              <span class="font-mono font-bold text-slate-800">757945920</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Inc. Date:</span>
+              <span class="font-bold text-slate-800">15-July-2024</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Name:</span>
+              <span class="font-extrabold text-blue-950">KAIZEN RESOURCES ( PRIVATE ) LIMITED</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">D-U-N-S Registry:</span>
+              <span class="font-mono font-bold text-brand-teal">757945920</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Address:</span>
+              <span class="font-semibold text-slate-800 text-right">House No. 359, Block G-3 Johar, Lahore, 54000 Pakistan</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Tax Office:</span>
+              <span class="font-bold text-slate-800">CRO Lahore</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-200">
+              <span class="text-slate-500 font-medium">Activity Type:</span>
+              <span class="font-bold text-slate-800">Business</span>
+            </div>
+          </div>
+
+          <!-- Legal Disclaimer Box -->
+          <div class="mt-5 p-3 rounded bg-slate-100 border border-slate-200 text-[10px] text-slate-600 leading-tight text-center">
+            <strong>Statutory Notice:</strong> This is a computer-generated certificate under Section 181C of the Income Tax Ordinance 2001 and hence no physical signatures are required. Displaying of Taxpayer Registration Certificate is mandatory as provided under the referenced statute.
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center pt-2">
+          <button onclick="copyToClipboard('757945920', 'Tax Registration ID copied to clipboard!')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition">
+            <i class="fa-regular fa-copy mr-1.5"></i> Copy Registration ID
+          </button>
+          <button onclick="closeVerificationModal()" class="px-5 py-2 bg-brand-navy hover:bg-slate-800 text-white rounded-lg text-xs font-bold transition">
+            Dismiss Viewer
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Service / Engagement Inquiry Modal -->
+  <div id="inquiryModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="p-5 bg-brand-navy text-white flex justify-between items-center">
+        <div>
+          <span class="text-[10px] font-bold uppercase text-brand-teal">Direct Portal</span>
+          <h3 id="inquiryModalTitle" class="font-bold text-base font-heading">Initiate Capability Briefing</h3>
+        </div>
+        <button onclick="closeInquiryModal()" class="text-slate-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleInquirySubmit(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Target Service Focus</label>
+          <input type="text" id="modalServiceInput" readonly class="w-full px-3 py-2 text-xs rounded bg-slate-100 border border-slate-300 font-bold text-slate-800">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Your Full Name *</label>
+          <input type="text" required id="modalName" placeholder="Executive Name" class="w-full px-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-brand-teal">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Corporate Email Address *</label>
+          <input type="email" required id="modalEmail" placeholder="name@company.com" class="w-full px-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-brand-teal">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Specific Requirements / Scope</label>
+          <textarea rows="3" required id="modalMessage" placeholder="Specify project timeline, requirements or consultation questions..." class="w-full px-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-brand-teal"></textarea>
+        </div>
+        <div class="flex justify-end space-x-2 pt-2">
+          <button type="button" onclick="closeInquiryModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded">Cancel</button>
+          <button type="submit" class="px-5 py-2 text-xs font-bold bg-brand-teal hover:bg-teal-600 text-white rounded shadow">Transmit Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FEEDBACK TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-5 right-5 z-50 hidden transition-all duration-300">
+    <div class="bg-brand-navy text-white text-xs px-4 py-3 rounded-lg shadow-xl border-l-4 border-brand-teal flex items-center space-x-3">
+      <i class="fa-solid fa-circle-check text-brand-teal text-base"></i>
+      <span id="toastMessage">Operation executed successfully.</span>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * SPA Client-Side Multi-Page Router
+     * Controls the visible section based on hash navigation
+     */
+    const validPages = ['home', 'about', 'services', 'governance', 'contact'];
+
+    function navigateToPage(pageId) {
+      if (!validPages.includes(pageId)) {
+        pageId = 'home';
+      }
+
+      // Hide all page sections
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active-page');
+      });
+
+      // Show selected section
+      const activeTarget = document.getElementById(`page-${pageId}`);
+      if (activeTarget) {
+        activeTarget.classList.add('active-page');
+      }
+
+      // Update Nav Link highlights
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('data-target') === pageId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      // Close mobile dropdown if open
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+
+      // Scroll to top cleanly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Hash change event listener
+    window.addEventListener('hashchange', () => {
+      const page = window.location.hash.replace('#', '') || 'home';
+      navigateToPage(page);
+    });
+
+    // Mobile menu toggle logic
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+
+    /**
+     * Modal Handlers
+     */
+    function openVerificationModal() {
+      document.getElementById('verificationModal').classList.remove('hidden');
+    }
+
+    function closeVerificationModal() {
+      document.getElementById('verificationModal').classList.add('hidden');
+    }
+
+    function openInquiryModal(serviceName) {
+      document.getElementById('modalServiceInput').value = serviceName || 'General Corporate Engagement';
+      document.getElementById('inquiryModalTitle').innerText = serviceName ? `Inquire: ${serviceName}` : 'Corporate Engagement';
+      document.getElementById('inquiryModal').classList.remove('hidden');
+    }
+
+    function closeInquiryModal() {
+      document.getElementById('inquiryModal').classList.add('hidden');
+    }
+
+    // Modal background click dismiss
+    window.addEventListener('click', (e) => {
+      const verModal = document.getElementById('verificationModal');
+      const inqModal = document.getElementById('inquiryModal');
+      if (e.target === verModal) closeVerificationModal();
+      if (e.target === inqModal) closeInquiryModal();
+    });
+
+    /**
+     * Toast notification utility
+     */
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const toastText = document.getElementById('toastMessage');
+      toastText.innerText = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
+
+    /**
+     * Clipboard Copy helper function
+     */
+    function copyToClipboard(text, successMessage) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMessage || 'Copied to clipboard!');
+      } catch (err) {
+        showToast('Unable to copy automatically.');
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    /**
+     * Form Submission Handlers (Replacing alerts with modals & toasts)
+     */
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('contactName').value;
+      const dept = document.getElementById('contactDepartment').value;
+      
+      showToast(`Thank you, ${name}. Your message to the ${dept} department has been registered.`);
+      event.target.reset();
+    }
+
+    function handleInquirySubmit(event) {
+      event.preventDefault();
+      const service = document.getElementById('modalServiceInput').value;
+      closeInquiryModal();
+      showToast(`Inquiry regarding "${service}" has been received. Our team will get back to you shortly.`);
+      event.target.reset();
+    }
+
+    // Initialize initial route on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const initialPage = window.location.hash.replace('#', '') || 'home';
+      navigateToPage(initialPage);
+    });
+  </script>
+</body>
+</html>
